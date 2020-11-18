@@ -7,14 +7,14 @@ matrix::matrix (int r, int c)
 {
     row=r;
     column=c;
-    m1=new double *[r];
+    mac=new double *[r];
     for(int i=0;i<r;i++)
     {
-        m1[i]=new double [c];
+        mac[i]=new double [c];
         for(int j=0;j<c;j++)
         {
-            m1[i][j]={0};
-            cout<<m1[i][j];
+            mac[i][j]={0};
+            cout<<mac[i][j]<<"\t";
         }
     cout<<endl;
     }
@@ -23,15 +23,29 @@ matrix::matrix (int r, int c)
 matrix::matrix (int s)
 {
     square=s;
-    m2=new double *[s];
+    mac=new double *[s];
     for(int i=0;i<s;i++)
     {
-        m2[i]=new double [s];
+        mac[i]=new double [s];
         for(int j=0;j<s;j++)
         {
-            m2[i][j]={0};
-            cout<<m1[i][j];
+            mac[i][j]={0};
+            cout<<mac[i][j]<<"\t";
         }
     cout<<endl;
     }
 }
+
+void matrix::set(int n,int m,double val)
+{
+    mac[n][m]={val};
+    cout<<mac[n][m]<<endl;
+}
+
+double matrix::get(int n,int m)
+{
+    double pobrana_wartosc;
+    pobrana_wartosc=mac[n][m];
+    cout<<pobrana_wartosc<<endl;
+}
+
