@@ -11,4 +11,5 @@ class matrix
     void set(int n,int m,double val);
     double get(int n,int m);
     double **add(double **nowa_macierz);
+    double **subtract(double **nowa_macierz);
 };

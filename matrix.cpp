@@ -75,3 +75,32 @@ double **matrix::add(double **nowa_macierz)
     }
     return n_mac;
 }
+
+double **matrix::subtract(double **nowa_macierz)
+{
+    double **n_mac;
+    n_mac=new double *[row];
+    
+    for(int i=0;i<row;i++)
+    {
+        if(column!=0)
+        {
+            n_mac[i]=new double [column];
+            for(int j=0;j<column;j++)
+            {
+                n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
+            }
+        }
+        else
+        {
+            n_mac[i]=new double [row];
+            for(int j=0;j<row;j++)
+            {
+                n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
+            }
+        }
+        
+    }
+    return n_mac;
+}
+
