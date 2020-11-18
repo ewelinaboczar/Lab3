@@ -17,16 +17,16 @@ int main()
     pob1=macierz1.get(1,1);
     pob2=macierz2.get(2,3);
 
-    double new_macierz[4][5];
-    for(int i=0;i<4;i++)
+    double new_macierz[5][4];
+    for(int i=0;i<5;i++)
     {
-        for(int j=0;j<5;j++)
+        for(int j=0;j<4;j++)
         {
             new_macierz[i][j]=rand()%100;
         }
     }
 
-    
+
 
     return 0;
 }

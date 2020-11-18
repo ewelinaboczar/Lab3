@@ -104,3 +104,36 @@ double **matrix::subtract(double **nowa_macierz)
     return n_mac;
 }
 
+double **matrix::multiply(double **nowa_macierz)
+{
+    double **n_mac;
+    n_mac=new double *[row];
+    
+    for(int i=0;i<row;i++)
+    {
+        if(column!=0) //prostokatna macierz
+        {
+            n_mac[i]=new double [column];
+            for(int j=0;j<column;j++)
+            {
+                for(int k=0;k<row;k++)
+                {
+                    n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
+                } 
+            }
+        }
+        else //kwadratowa
+        {
+            n_mac[i]=new double [row];
+            for(int j=0;j<row;j++)
+            {
+                for(int k=0;k<row;k++)
+                {
+                    n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
+                }   
+            }    
+        }
+    }
+    return n_mac;
+}
+
