@@ -2,8 +2,7 @@
 
 class matrix
 {
-    int row, column;
-    int square;
+    int row=0, column=0;
     double **mac; 
     
     public:
@@ -11,4 +10,5 @@ class matrix
     matrix(int);
     void set(int n,int m,double val);
     double get(int n,int m);
+    double **add(double **nowa_macierz);
 };

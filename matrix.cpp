@@ -20,14 +20,14 @@ matrix::matrix (int r, int c)
     }
 }
 
-matrix::matrix (int s)
+matrix::matrix (int r)
 {
-    square=s;
-    mac=new double *[s];
-    for(int i=0;i<s;i++)
+    row=r;
+    mac=new double *[r];
+    for(int i=0;i<r;i++)
     {
-        mac[i]=new double [s];
-        for(int j=0;j<s;j++)
+        mac[i]=new double [r];
+        for(int j=0;j<r;j++)
         {
             mac[i][j]={0};
             cout<<mac[i][j]<<"\t";
@@ -44,8 +44,34 @@ void matrix::set(int n,int m,double val)
 
 double matrix::get(int n,int m)
 {
-    double pobrana_wartosc;
-    pobrana_wartosc=mac[n][m];
-    cout<<pobrana_wartosc<<endl;
+    cout<<"Pobrano wartosc: "<<mac[n][m]<<endl;
+    return mac[n][m];
 }
 
+double **matrix::add(double **nowa_macierz)
+{
+    double **n_mac;
+    n_mac=new double *[row];
+    
+    for(int i=0;i<row;i++)
+    {
+        if(column!=0)
+        {
+            n_mac[i]=new double [column];
+            for(int j=0;j<column;j++)
+            {
+                n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
+            }
+        }
+        else
+        {
+            n_mac[i]=new double [row];
+            for(int j=0;j<row;j++)
+            {
+                n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
+            }
+        }
+        
+    }
+    return n_mac;
+}
