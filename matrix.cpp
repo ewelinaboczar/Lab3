@@ -14,15 +14,14 @@ matrix::matrix (int r, int c)
         for(int j=0;j<c;j++)
         {
             mac[i][j]={0};
-            cout<<mac[i][j]<<"\t";
         }
-    cout<<endl;
     }
 }
 
 matrix::matrix (int r)
 {
     row=r;
+    column=r;
     mac=new double *[r];
     for(int i=0;i<r;i++)
     {
@@ -30,9 +29,7 @@ matrix::matrix (int r)
         for(int j=0;j<r;j++)
         {
             mac[i][j]={0};
-            cout<<mac[i][j]<<"\t";
         }
-    cout<<endl;
     }
 }
 
@@ -43,14 +40,20 @@ int matrix::cols()
 
 int matrix::rows()
 {
-    if(column!=0)
+    return row;
+}
+
+void matrix::print()
+{
+    
+    for(int i=0;i<row;i++)
     {
-        return row;
-    }
-    else
-    {
-        return column;
-    }
+        for(int j=0;j<column;j++)
+        {
+            cout<<mac[i][j]<<"\t";
+        }
+        cout<<endl;
+    } 
 }
 
 void matrix::set(int n,int m,double val)
@@ -72,23 +75,11 @@ double **matrix::add(double **nowa_macierz)
     
     for(int i=0;i<row;i++)
     {
-        if(column!=0)
+        n_mac[i]=new double [column];
+        for(int j=0;j<column;j++)
         {
-            n_mac[i]=new double [column];
-            for(int j=0;j<column;j++)
-            {
-                n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
-            }
-        }
-        else
-        {
-            n_mac[i]=new double [row];
-            for(int j=0;j<row;j++)
-            {
-                n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
-            }
-        }
-        
+            n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
+        } 
     }
     return n_mac;
 }
@@ -100,23 +91,11 @@ double **matrix::subtract(double **nowa_macierz)
     
     for(int i=0;i<row;i++)
     {
-        if(column!=0)
+        n_mac[i]=new double [column];
+        for(int j=0;j<column;j++)
         {
-            n_mac[i]=new double [column];
-            for(int j=0;j<column;j++)
-            {
-                n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
-            }
+            n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
         }
-        else
-        {
-            n_mac[i]=new double [row];
-            for(int j=0;j<row;j++)
-            {
-                n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
-            }
-        }
-        
     }
     return n_mac;
 }
@@ -128,27 +107,13 @@ double **matrix::multiply(double **nowa_macierz)
     
     for(int i=0;i<row;i++)
     {
-        if(column!=0) //prostokatna macierz
+        n_mac[i]=new double [column];
+        for(int j=0;j<column;j++)
         {
-            n_mac[i]=new double [column];
-            for(int j=0;j<column;j++)
+            for(int k=0;k<row;k++)
             {
-                for(int k=0;k<row;k++)
-                {
-                    n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
-                } 
-            }
-        }
-        else //kwadratowa
-        {
-            n_mac[i]=new double [row];
-            for(int j=0;j<row;j++)
-            {
-                for(int k=0;k<row;k++)
-                {
-                    n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
-                }   
-            }    
+                n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
+            } 
         }
     }
     return n_mac;
