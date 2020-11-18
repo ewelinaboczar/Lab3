@@ -13,4 +13,7 @@ class matrix
     double **add(double **nowa_macierz);
     double **subtract(double **nowa_macierz);
     double **multiply(double **nowa_macierz);
+    int cols();
+    int rows();
+    void print();
 };

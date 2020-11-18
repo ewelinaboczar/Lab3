@@ -36,6 +36,23 @@ matrix::matrix (int r)
     }
 }
 
+int matrix::cols()
+{
+    return column;
+}
+
+int matrix::rows()
+{
+    if(column!=0)
+    {
+        return row;
+    }
+    else
+    {
+        return column;
+    }
+}
+
 void matrix::set(int n,int m,double val)
 {
     mac[n][m]={val};
