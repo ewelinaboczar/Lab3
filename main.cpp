@@ -1,8 +1,10 @@
 #include <iostream>
-#include "class.h"
+#include "matrix.h"
 
 int main()
 {
-    std::cout<<"Hello world!"<<std::endl;
+    matrix macierz1(4,5);
+    matrix macierz2(5);
+    
     return 0;
 }
