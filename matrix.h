@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <cstring>
 
 class matrix
 {
@@ -10,10 +13,12 @@ class matrix
     matrix(int);
     void set(int n,int m,double val);
     double get(int n,int m);
-    double **add(double **nowa_macierz);
-    double **subtract(double **nowa_macierz);
-    double **multiply(double **nowa_macierz);
+    matrix add(matrix m2);
+    matrix subtract(matrix m2);
+    matrix multiply(matrix m2);
     int cols();
     int rows();
     void print();
+    void store(string filename, string path);
+    matrix(string path);
 };

@@ -1,34 +1,49 @@
-#include <iostream>
 #include "matrix.h"
 
 using namespace std;
 
 matrix::matrix (int r, int c)
 {
-    row=r;
-    column=c;
-    mac=new double *[r];
-    for(int i=0;i<r;i++)
+    if(r<=0 && c<=0)
     {
-        mac[i]=new double [c];
-        for(int j=0;j<c;j++)
+        cout<<"Podales zle wymiary macierzy"<<endl;
+        exit(0);
+    }
+    else
+    {
+        row=r;
+        column=c;
+        mac=new double *[r];
+        for(int i=0;i<r;i++)
         {
-            mac[i][j]={0};
+            mac[i]=new double [c];
+            for(int j=0;j<c;j++)
+            {
+                mac[i][j]={0};
+            }
         }
     }
 }
 
 matrix::matrix (int r)
 {
-    row=r;
-    column=r;
-    mac=new double *[r];
-    for(int i=0;i<r;i++)
+    if(r<=0)
     {
-        mac[i]=new double [r];
-        for(int j=0;j<r;j++)
+        cout<<"Podales zle wymiary macierzy"<<endl;
+        exit(0);
+    }
+    else
+    {
+        row=r;
+        column=r;
+        mac=new double *[r];
+        for(int i=0;i<r;i++)
         {
-            mac[i][j]={0};
+            mac[i]=new double [r];
+            for(int j=0;j<r;j++)
+            {
+                mac[i][j]={0};
+            }
         }
     }
 }
@@ -59,63 +74,122 @@ void matrix::print()
 void matrix::set(int n,int m,double val)
 {
     mac[n][m]={val};
-    cout<<mac[n][m]<<endl;
 }
 
 double matrix::get(int n,int m)
 {
-    cout<<"Pobrano wartosc: "<<mac[n][m]<<endl;
     return mac[n][m];
 }
 
-double **matrix::add(double **nowa_macierz)
+matrix matrix::add(matrix m2)
 {
-    double **n_mac;
-    n_mac=new double *[row];
-    
-    for(int i=0;i<row;i++)
+    if(row != m2.rows() && column != m2.cols())
     {
-        n_mac[i]=new double [column];
-        for(int j=0;j<column;j++)
+        cout<<"Nie mozna dodac tych macierzy, maja inne wymiary!"<<endl;
+        return 0;
+    }
+    matrix add(column,row);
+    for(int i=0;i<column;i++)
+    {
+        for(int j=0;j<row;j++)
         {
-            n_mac[i][j]=mac[i][j]+nowa_macierz[i][j];
+            double sum=0;
+
+            sum= mac[i][j]+m2.get(i,j);
+            add.matrix::set(i,j,sum);
         } 
     }
-    return n_mac;
+    return add;
 }
 
-double **matrix::subtract(double **nowa_macierz)
+matrix matrix::subtract(matrix m2)
 {
-    double **n_mac;
-    n_mac=new double *[row];
-    
-    for(int i=0;i<row;i++)
+    if(row != m2.rows() && column != m2.cols())
     {
-        n_mac[i]=new double [column];
-        for(int j=0;j<column;j++)
+        cout<<"Nie mozna odjac tych macierzy, maja inne wymiary!"<<endl;
+        return 0;
+    }
+    
+    matrix new_mac(column,row);
+    for(int i=0;i<column;i++)
+    {
+        for(int j=0;j<row;j++)
         {
-            n_mac[i][j]=mac[i][j]-nowa_macierz[i][j];
+            double wynik_odejm=0;
+
+            wynik_odejm=mac[i][j]-m2.get(i,j);
+            new_mac.matrix::set(i,j,wynik_odejm);
         }
     }
-    return n_mac;
+    return new_mac;
 }
 
-double **matrix::multiply(double **nowa_macierz)
+matrix matrix::multiply(matrix m2)
 {
-    double **n_mac;
-    n_mac=new double *[row];
-    
-    for(int i=0;i<row;i++)
+    if(m2.rows() != column)
     {
-        n_mac[i]=new double [column];
-        for(int j=0;j<column;j++)
+        cout<<"Nie mozna pomnozyc tych macierzy!"<<endl;
+        return 0;
+    }
+
+    matrix new_mac(column,m2.rows());
+    for(int i=0;i<column;i++)
+    {
+        for(int j=0;j<m2.rows();j++)
         {
+            double multiplication=1;
             for(int k=0;k<row;k++)
             {
-                n_mac[i][j]+=mac[i][k]*nowa_macierz[k][j];
-            } 
+                multiplication+=mac[i][j]*m2.matrix::get(k,j);
+            }
+            new_mac.matrix::set(i,j,multiplication);
         }
     }
-    return n_mac;
+    return new_mac;
 }
 
+void matrix::store(string filename, string path)
+{
+    ofstream  file;
+
+    path += "\\" + filename;
+    file.open(path, ios_base::out);
+    if( !file.good() )
+    {
+        cout << "Blad otwarcia pliku" << endl;
+        exit(0);
+    }
+
+    file << row << "\t" << column << endl;
+    for(int i=0; i<column; i++)
+    {
+        for(int j=0; j<row; j++ )
+            file <<mac[i][j] << "\t";
+        file << endl;
+    }
+
+    file.close();
+}
+
+matrix::matrix(string path)
+{
+    ifstream file;
+    file.open(path);
+    if(file.good()!=0)
+    {
+        cout << "Blad otwarcia pliku" << endl;
+        exit(0);
+    }
+
+    file >> column;
+    file >> row;
+
+    for(int i =0; i<column; i++)
+    {
+        for(int j=0; j<row; j++)
+        {
+            file >> mac[i][j];
+        }
+    }
+    file.close();
+}
