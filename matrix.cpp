@@ -1,5 +1,6 @@
 #include "matrix.h"
 
+
 using namespace std;
 
 matrix::matrix (int r, int c)
@@ -162,21 +163,26 @@ void matrix::store(string filename, string path)
 
 matrix::matrix(string path)
 {
-    ifstream file(path,ios::in);
+    ifstream file(path);
+    file.open(path);
     if(file.good()!=0)
     {
         cout << "Blad otwarcia pliku" << endl;
+        exit(0);
     }
-
-    file >> row;
-    file >> column;
-
-    for(int i =0; i<row; i++)
+    else
     {
-        for(int j=0; j<column; j++)
+        file >> row;
+        file >> column;
+        mac =new double *[row];
+        for(int i =0; i<row; i++)
         {
-            file >> mac[i][j];
+            mac[i]=new double [column];
+            for(int j=0; j<column; j++)
+            {
+                file >> mac[i][j];
+            }
         }
-    }
-    file.close();
+        file.close();
+    }  
 }

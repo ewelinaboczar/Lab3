@@ -1,8 +1,7 @@
 #include <iostream>
 #include "matrix.cpp"
 #include <string>
-#include <time.h>
-#include <random>
+
 using namespace std;
 
 int main()
@@ -410,13 +409,15 @@ int main()
             case 3:
             {
                 cout<<"Nasz obiekt na ktorym bedziemy pracowac to 'macierz3'"<<endl;
-                string a, b, path;
+                string a;
+                string b;
+                string path;
                 bool gen_m2=true;
-                path=b+"\\"+a;
                 cout<<"Podaj nazwe pliku z ktorego chcesz wczytac macierz:"<<endl;
                 cin>>a;
                 cout<<"Podaj sciezke dostepu do tego pliku:"<<endl;
                 cin>>b;
+                path=b+"\\"+a;
 
                 matrix macierz3(path);
                 matrix m2(macierz3.rows(),macierz3.cols());

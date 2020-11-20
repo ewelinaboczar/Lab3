@@ -11,8 +11,10 @@ class matrix
     double **mac; 
     
     public:
+    matrix(string path);
     matrix(int,int);
     matrix(int);
+    
     void set(int n,int m,double val);
     double get(int n,int m);
     void add(matrix m2);
@@ -22,7 +24,7 @@ class matrix
     int rows();
     void print();
     void store(string ,string );
-    matrix(string );
+    
     
 };
 
