@@ -235,7 +235,7 @@ int main()
                     }
                 }
                 cout<<endl;
-                cout<<"Menu:"<<endl;
+                cout<<"Wybier dla macierz1:"<<endl;
                 cout<<"0. Koniec"<<endl;
                 cout<<"1. Pokaz macierz na ekranie"<<endl;
                 cout<<"2. Dodaj element macierzy"<<endl;
@@ -301,8 +301,54 @@ int main()
                     }        
                     case 6:
                     {
-                        cout<<"Mnozenie macierzy m2 i macierz1"<<endl;
-                        macierz1.multiply(m2); 
+                        cout<<"Mnozenie macierzy m2 i macierz1 jest niemozliwe (maja te same wymiary)"<<endl;
+                        cout<<"Chcesz stworzyc inna macierz m3, aby mozna bylo pomnozyc macierz1 i m3?(t/n)"<<endl;
+                        char odpowiedz;
+                        cin>>odpowiedz;
+                        switch(odpowiedz)
+                        {
+                            case 't':
+                            {
+                                bool gen_m3=true;
+                                matrix m3(macierz1.cols(),macierz1.rows());
+                                while(gen_m3)
+                                {
+                                    int wybor_m3;
+                                    cout<<"0. Koniec"<<endl;
+                                    cout<<"1. Dodaj element macierzy m3"<<endl;
+                                    cout<<"2. Wyswietl macierz m3"<<endl;
+                                    cout<<"Wybierz:"<<endl;
+                                    cin>>wybor_m3;
+                                    switch(wybor_m3)
+                                    {
+                                        case 0:
+                                            {
+                                                gen_m3=false;
+                                                break;
+                                            } 
+                                            case 1:
+                                            {
+                                                int n,m,val;
+                                                cout<<"Podaj wiersz, kolumne i wartosc dla m3:"<<endl;
+                                                cin>>n>>m>>val;
+                                                m3.set(n,m,val);
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                cout<<"Macierz m3:"<<endl;
+                                                m3.print();
+                                                break;
+                                            }
+                                    }
+                                }
+                                macierz1.multiply(m3);
+                            }
+                            case 'n':
+                            {
+                                break;
+                            }
+                        }
                         break;
                     }    
                     case 7:
@@ -473,10 +519,56 @@ int main()
                     }        
                     case 6:
                     {
-                        cout<<"Mnozenie macierzy m2 i macierz3"<<endl;
-                        macierz3.multiply(m2); 
+                        cout<<"Mnozenie macierzy m2 i macierz1 jest niemozliwe (maja te same wymiary)"<<endl;
+                        cout<<"Chcesz stworzyc inna macierz m3, aby mozna bylo pomnozyc macierz1 i m3?(t/n)"<<endl;
+                        char odpowiedz;
+                        cin>>odpowiedz;
+                        switch(odpowiedz)
+                        {
+                            case 't':
+                            {
+                                bool gen_m3=true;
+                                matrix m3(macierz3.cols(),macierz3.rows());
+                                while(gen_m3)
+                                {
+                                    int wybor_m3;
+                                    cout<<"0. Koniec"<<endl;
+                                    cout<<"1. Dodaj element macierzy m3"<<endl;
+                                    cout<<"2. Wyswietl macierz m3"<<endl;
+                                    cout<<"Wybierz:"<<endl;
+                                    cin>>wybor_m3;
+                                    switch(wybor_m3)
+                                    {
+                                        case 0:
+                                            {
+                                                gen_m3=false;
+                                                break;
+                                            } 
+                                            case 1:
+                                            {
+                                                int n,m,val;
+                                                cout<<"Podaj wiersz, kolumne i wartosc dla m3:"<<endl;
+                                                cin>>n>>m>>val;
+                                                m3.set(n,m,val);
+                                                break;
+                                            }
+                                            case 2:
+                                            {
+                                                cout<<"Macierz m3:"<<endl;
+                                                m3.print();
+                                                break;
+                                            }
+                                    }
+                                }
+                                macierz3.multiply(m3);
+                            }
+                            case 'n':
+                            {
+                                break;
+                            }
+                        }
                         break;
-                    }    
+                    }     
                     case 7:
                     {
                         cout<<"Macierz3 ma "<<macierz3.cols()<< " wierszy"<<endl;

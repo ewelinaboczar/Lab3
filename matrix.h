@@ -23,5 +23,6 @@ class matrix
     void print();
     void store(string ,string );
     matrix(string );
+    
 };
 
