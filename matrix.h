@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
-#include <cstring>
+#include <string>
+
+using namespace std;
 
 class matrix
 {
@@ -13,12 +15,13 @@ class matrix
     matrix(int);
     void set(int n,int m,double val);
     double get(int n,int m);
-    matrix add(matrix m2);
-    matrix subtract(matrix m2);
-    matrix multiply(matrix m2);
+    void add(matrix m2);
+    void subtract(matrix m2);
+    void multiply(matrix m2);
     int cols();
     int rows();
     void print();
-    void store(string filename, string path);
-    matrix(string path);
+    void store(string ,string );
+    matrix(string );
 };
+

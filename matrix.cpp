@@ -60,120 +60,111 @@ int matrix::rows()
 
 void matrix::print()
 {
-    
     for(int i=0;i<row;i++)
-    {
+        {
         for(int j=0;j<column;j++)
         {
             cout<<mac[i][j]<<"\t";
         }
         cout<<endl;
-    } 
+    }
+    cout<<"\n";
 }
 
 void matrix::set(int n,int m,double val)
 {
-    mac[n][m]={val};
+    if(n<1 && n>row && m<1 && m>column)
+    {
+        cout<<"Podana wspolrzedna macierzy nie istnieje";
+    }
+    else
+    {
+        mac[n-1][m-1]=val;
+    }
 }
 
 double matrix::get(int n,int m)
 {
-    return mac[n][m];
+    return mac[n-1][m-1];
 }
 
-matrix matrix::add(matrix m2)
+void matrix::add(matrix m2)
 {
     if(row != m2.rows() && column != m2.cols())
     {
         cout<<"Nie mozna dodac tych macierzy, maja inne wymiary!"<<endl;
-        return 0;
+        exit(0);
     }
-    matrix add(column,row);
-    for(int i=0;i<column;i++)
+    matrix add(rows(),cols());
+    for(int i=0;i<row;i++)
     {
-        for(int j=0;j<row;j++)
+        for(int j=0;j<column;j++)
         {
-            double sum=0;
-
-            sum= mac[i][j]+m2.get(i,j);
-            add.matrix::set(i,j,sum);
+            add.mac[i][j]=mac[i][j]+m2.mac[i][j];
         } 
     }
-    return add;
+    add.print();
 }
 
-matrix matrix::subtract(matrix m2)
+void matrix::subtract(matrix m2)
 {
     if(row != m2.rows() && column != m2.cols())
     {
         cout<<"Nie mozna odjac tych macierzy, maja inne wymiary!"<<endl;
-        return 0;
+        exit(0);
     }
     
-    matrix new_mac(column,row);
-    for(int i=0;i<column;i++)
+    matrix new_mac(rows(),cols());
+    for(int i=0;i<row;i++)
     {
-        for(int j=0;j<row;j++)
+        for(int j=0;j<column;j++)
         {
-            double wynik_odejm=0;
-
-            wynik_odejm=mac[i][j]-m2.get(i,j);
-            new_mac.matrix::set(i,j,wynik_odejm);
+            new_mac.mac[i][j]=mac[i][j]-m2.mac[i][j];
         }
     }
-    return new_mac;
+    new_mac.print();
 }
 
-matrix matrix::multiply(matrix m2)
+void matrix::multiply(matrix m2)
 {
-    if(m2.rows() != column)
-    {
-        cout<<"Nie mozna pomnozyc tych macierzy!"<<endl;
-        return 0;
-    }
+    matrix mull(rows(),m2.cols());
 
-    matrix new_mac(column,m2.rows());
-    for(int i=0;i<column;i++)
+    for(int i=0;i<rows();i++)
     {
-        for(int j=0;j<m2.rows();j++)
+        for(int j=0;j<m2.cols();j++)
         {
-            double multiplication=1;
-            for(int k=0;k<row;k++)
+            double multiplication=0;
+            for(int k=0;k<cols();k++)
             {
-                multiplication+=mac[i][j]*m2.matrix::get(k,j);
+                multiplication+=mac[i][j]*m2.mac[k][j];
             }
-            new_mac.matrix::set(i,j,multiplication);
+            mull.mac[i][j]=multiplication;
         }
     }
-    return new_mac;
+    mull.print();
 }
 
 void matrix::store(string filename, string path)
 {
-    ofstream  file;
-
     path += "\\" + filename;
-    file.open(path, ios_base::out);
-    if( !file.good() )
-    {
-        cout << "Blad otwarcia pliku" << endl;
-        exit(0);
-    }
+    ofstream  file(path);
 
     file << row << "\t" << column << endl;
-    for(int i=0; i<column; i++)
+    for(int i=0; i<row; i++)
     {
-        for(int j=0; j<row; j++ )
-            file <<mac[i][j] << "\t";
+        for(int j=0; j<column; j++ )
+        {
+            int wart=mac[i][j];
+            file <<wart<< "\t";
+        }
         file << endl;
     }
-
     file.close();
 }
 
 matrix::matrix(string path)
 {
-    ifstream file;
+    ifstream file(path);
     file.open(path);
     if(file.good()!=0)
     {
