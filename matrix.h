@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <string.h>
 
-using namespace std;
 
 class matrix
 {
@@ -11,9 +11,9 @@ class matrix
     double **mac; 
     
     public:
-    matrix(string path);
-    matrix(int,int);
-    matrix(int);
+    matrix(std::string path);
+    matrix(int r,int c);
+    matrix(int r);
     
     void set(int n,int m,double val);
     double get(int n,int m);
@@ -23,8 +23,7 @@ class matrix
     int cols();
     int rows();
     void print();
-    void store(string ,string );
-    
-    
+    void store(std::string ,std::string );
+  
 };
 

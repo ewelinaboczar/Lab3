@@ -1,11 +1,15 @@
 #include <iostream>
 #include "matrix.cpp"
+#include <cstdlib>
+#include <windows.h>
+#include <string.h>
 #include <string>
 
 using namespace std;
 
 int main()
 {
+    system("cls");
     bool p=true;
 
     while(p)
@@ -26,6 +30,7 @@ int main()
             }
             case 1:
             {
+                system("cls");
                 cout<<"Nasz obiekt na ktorym bedziemy pracowac to 'macierz2'"<<endl;
                 int w;
                 bool gen_m2=true;
@@ -36,6 +41,7 @@ int main()
                 cout<<"Najpierw wygenerujemy macierz m2"<<endl;
                 while(gen_m2)
                 {
+                    system("cls");
                     int wybor_m2;
                     cout<<"0. Koniec"<<endl;
                     cout<<"1. Dodaj element macierzy m2"<<endl;
@@ -51,6 +57,7 @@ int main()
                             } 
                             case 1:
                             {
+                                system("cls");
                                 int n,m,val;
                                 cout<<"Podaj wiersz, kolumne i wartosc dla m2:"<<endl;
                                 cin>>n>>m>>val;
@@ -59,6 +66,7 @@ int main()
                             } 
                             case 2:
                             {
+                                system("cls");
                                 cout<<"Macierz m2:"<<endl;
                                 m2.print();
                                 break;
@@ -66,22 +74,24 @@ int main()
                     }
                 }
                 cout<<endl;
-                cout<<"Menu:"<<endl;
-                cout<<"0. Koniec"<<endl;
-                cout<<"1. Pokaz macierz na ekranie"<<endl;
-                cout<<"2. Dodaj element macierzy"<<endl;
-                cout<<"3. Pobierz element macierzy"<<endl;
-                cout<<"4. Dodaj macierze"<<endl;
-                cout<<"5. Odejmij macierze"<<endl;
-                cout<<"6. Pomnoz macierze"<<endl;
-                cout<<"7. Ilosc wierszy macierzy"<<endl;
-                cout<<"8. Ilosc kolumn macierzy"<<endl;
-                cout<<"9. Zapisz macierz w pliku"<<endl;
+                
 
                 bool program=true;
                 while(program)
                 {
+                    system("cls");
                     cout<<"Wybierz co chcesz zrobic"<<endl;
+                    cout<<"0. Koniec"<<endl;
+                    cout<<"1. Pokaz macierz na ekranie"<<endl;
+                    cout<<"2. Dodaj element macierzy"<<endl;
+                    cout<<"3. Pobierz element macierzy"<<endl;
+                    cout<<"4. Dodaj macierze"<<endl;
+                    cout<<"5. Odejmij macierze"<<endl;
+                    cout<<"6. Pomnoz macierze"<<endl;
+                    cout<<"7. Ilosc wierszy macierzy"<<endl;
+                    cout<<"8. Ilosc kolumn macierzy"<<endl;
+                    cout<<"9. Zapisz macierz w pliku"<<endl;
+                    
                     int number;
                     cin>>number;
                     switch (number)
@@ -94,11 +104,13 @@ int main()
                     }   
                     case 1:
                     {
+                        system("cls");
                         macierz2.print();
                         break;
                     }
                     case 2:
                     {
+                        system("cls");
                         int n1,m1;
                         double val;
                         cout<<"W jakim miejscu macierzy chcesz dodac element?"<<endl;
@@ -109,6 +121,7 @@ int main()
                     }
                     case 3:
                     {
+                        system("cls");
                         int n4,m4;
                         double pob2;
                         cout<<"Ktory element macierzy chcesz pobrac?"<<endl;
@@ -120,34 +133,40 @@ int main()
                     }
                     case 4:
                     {
+                        system("cls");
                         cout<<"Wynik dodawania m2 i macierz2:"<<endl;
                         macierz2.add(m2);
                         break;
                     }
                     case 5:
                     {
+                        system("cls");
                         cout<<"Wynik odejmowania m2 od macierz2:"<<endl;
                         macierz2.subtract(m2);
                         break;
                     }        
                     case 6:
                     {
+                        system("cls");
                         cout<<"Mnozenie macierzy m2 i macierz2"<<endl;
                         macierz2.multiply(m2); 
                         break;
                     }    
                     case 7:
                     {
-                        cout<<"Macierz2 ma "<<macierz2.cols()<< " wierszy"<<endl;
+                        system("cls");
+                        cout<<"Macierz2 ma "<<macierz2.rows()<< " wierszy"<<endl;
                         break;
                     }
                     case 8:
                     {
-                        cout<<"Macierz2 ma "<<macierz2.rows()<< " kolumn"<<endl;
+                        system("cls");
+                        cout<<"Macierz2 ma "<<macierz2.cols()<< " kolumn"<<endl;
                         break;
                     }
                     case 9:
                     {
+                        system("cls");
                         string a, b, path;
                         path=b+"\\"+a;
                         cout<<"Zapisywanie macierzy do pliku"<<endl;
@@ -155,6 +174,7 @@ int main()
                         bool x=true;
                         while(x)
                         {
+                            system("cls");
                             cout<<"0. Koniec"<<endl;
                             cout<<"1. Zapisz macierz2 do pliku"<<endl;
                             cout<<"2. Zapisz m2 do pliku"<<endl;
@@ -185,15 +205,16 @@ int main()
                         break;
                     }   
                     default:
+                        system("cls");
                         cout<<"Wybrano bledny numer, wybierz ponownie"<<endl;
                         break;
                     }
                 }
-                system("cls");
                 break;
             }
             case 2:
             {
+                system("cls");
                 cout<<"Nasz obiekt na ktorym bedziemy pracowac to 'macierz1'"<<endl;
                 int w,k;
                 bool gen_m2=true;
@@ -233,23 +254,23 @@ int main()
                             }
                     }
                 }
-                cout<<endl;
-                cout<<"Wybier dla macierz1:"<<endl;
-                cout<<"0. Koniec"<<endl;
-                cout<<"1. Pokaz macierz na ekranie"<<endl;
-                cout<<"2. Dodaj element macierzy"<<endl;
-                cout<<"3. Pobierz element macierzy"<<endl;
-                cout<<"4. Dodaj macierze"<<endl;
-                cout<<"5. Odejmij macierze"<<endl;
-                cout<<"6. Pomnoz macierze"<<endl;
-                cout<<"7. Ilosc wierszy macierzy"<<endl;
-                cout<<"8. Ilosc kolumn macierzy"<<endl;
-                cout<<"9. Zapisz macierz w pliku"<<endl;
-
+                
                 bool program=true;
                 while(program)
                 {
+                    system("cls");
                     cout<<"Wybierz co chcesz zrobic"<<endl;
+                    cout<<"0. Koniec"<<endl;
+                    cout<<"1. Pokaz macierz na ekranie"<<endl;
+                    cout<<"2. Dodaj element macierzy"<<endl;
+                    cout<<"3. Pobierz element macierzy"<<endl;
+                    cout<<"4. Dodaj macierze"<<endl;
+                    cout<<"5. Odejmij macierze"<<endl;
+                    cout<<"6. Pomnoz macierze"<<endl;
+                    cout<<"7. Ilosc wierszy macierzy"<<endl;
+                    cout<<"8. Ilosc kolumn macierzy"<<endl;
+                    cout<<"9. Zapisz macierz w pliku"<<endl;
+
                     int number;
                     cin>>number;
                     switch (number)
@@ -262,11 +283,13 @@ int main()
                     }   
                     case 1:
                     {
+                        system("cls");
                         macierz1.print();
                         break;
                     }
                     case 2:
                     {
+                        system("cls");
                         int n,m;
                         double val;
                         cout<<"W jakim miejscu macierzy chcesz dodac element?"<<endl;
@@ -277,6 +300,7 @@ int main()
                     }
                     case 3:
                     {
+                        system("cls");
                         int n,m;
                         double pob;
                         cout<<"Ktory element macierzy chcesz pobrac?"<<endl;
@@ -288,18 +312,21 @@ int main()
                     }
                     case 4:
                     {
+                        system("cls");
                         cout<<"Wynik dodawania m2 i macierz1:"<<endl;
                         macierz1.add(m2);
                         break;
                     }
                     case 5:
                     {
+                        system("cls");
                         cout<<"Wynik odejmowania m2 od macierz1:"<<endl;
                         macierz1.subtract(m2);
                         break;
                     }        
                     case 6:
                     {
+                        system("cls");
                         cout<<"Mnozenie macierzy m2 i macierz1 jest niemozliwe (maja te same wymiary)"<<endl;
                         cout<<"Chcesz stworzyc inna macierz m3, aby mozna bylo pomnozyc macierz1 i m3?(t/n)"<<endl;
                         char odpowiedz;
@@ -312,6 +339,7 @@ int main()
                                 matrix m3(macierz1.cols(),macierz1.rows());
                                 while(gen_m3)
                                 {
+                                    system("cls");
                                     int wybor_m3;
                                     cout<<"0. Koniec"<<endl;
                                     cout<<"1. Dodaj element macierzy m3"<<endl;
@@ -352,16 +380,19 @@ int main()
                     }    
                     case 7:
                     {
-                        cout<<"Macierz1 ma "<<macierz1.cols()<< " wierszy"<<endl;
+                        system("cls");
+                        cout<<"Macierz1 ma "<<macierz1.rows()<< " wierszy"<<endl;
                         break;
                     }
                     case 8:
                     {
-                        cout<<"Macierz1 ma "<<macierz1.rows()<< " kolumn"<<endl;
+                        system("cls");
+                        cout<<"Macierz1 ma "<<macierz1.cols()<< " kolumn"<<endl;
                         break;
                     }
                     case 9:
                     {
+                        system("cls");
                         string a, b, path;
                         path=b+"\\"+a;
                         cout<<"Zapisywanie macierzy do pliku"<<endl;
@@ -369,6 +400,7 @@ int main()
                         bool x=true;
                         while(x)
                         {
+                            system("cls");
                             cout<<"0. Koniec"<<endl;
                             cout<<"1. Zapisz macierz1 do pliku"<<endl;
                             cout<<"2. Zapisz m2 do pliku"<<endl;
@@ -399,31 +431,36 @@ int main()
                         break;
                     }    
                     default:
+                        system("cls");
                         cout<<"Wybrano bledny numer, wybierz ponownie"<<endl;
                         break;
                     }
                 }
-                system("cls");
                 break;
             }
             case 3:
             {
+                //E:\\Studia\\Semestr_III\\JIPP\\Laboratorium_3\\MAC.txt
+                system("cls");
+                bool gen_m2=true;
                 cout<<"Nasz obiekt na ktorym bedziemy pracowac to 'macierz3'"<<endl;
                 string a;
                 string b;
-                string path;
-                bool gen_m2=true;
+
                 cout<<"Podaj nazwe pliku z ktorego chcesz wczytac macierz:"<<endl;
                 cin>>a;
                 cout<<"Podaj sciezke dostepu do tego pliku:"<<endl;
                 cin>>b;
-                path=b+"\\"+a;
+                string path=b+"\\\\"+a;
+                cout<<"Sciezka dostepu do pliku: "<<path<<endl;
 
                 matrix macierz3(path);
+                macierz3.print();
                 matrix m2(macierz3.rows(),macierz3.cols());
                 cout<<"Najpierw wygenerujemy macierz m2"<<endl;
                 while(gen_m2)
                 {
+                    system("cls");
                     int wybor_m2;
                     cout<<"0. Koniec"<<endl;
                     cout<<"1. Dodaj element macierzy m2"<<endl;
@@ -439,6 +476,7 @@ int main()
                             } 
                             case 1:
                             {
+                                system("cls");
                                 int n,m,val;
                                 cout<<"Podaj wiersz, kolumne i wartosc dla m2:"<<endl;
                                 cin>>n>>m>>val;
@@ -447,6 +485,7 @@ int main()
                             } 
                             case 2:
                             {
+                                system("cls");
                                 cout<<"Macierz m2:"<<endl;
                                 m2.print();
                                 break;
@@ -454,22 +493,23 @@ int main()
                     }
                 }
                 cout<<endl;
-                cout<<"Menu:"<<endl;
-                cout<<"0. Koniec"<<endl;
-                cout<<"1. Pokaz macierz na ekranie"<<endl;
-                cout<<"2. Dodaj element macierzy"<<endl;
-                cout<<"3. Pobierz element macierzy"<<endl;
-                cout<<"4. Dodaj macierze"<<endl;
-                cout<<"5. Odejmij macierze"<<endl;
-                cout<<"6. Pomnoz macierze"<<endl;
-                cout<<"7. Ilosc wierszy macierzy"<<endl;
-                cout<<"8. Ilosc kolumn macierzy"<<endl;
-                cout<<"9. Zapisz macierz w pliku"<<endl;
+                
 
                 bool program=true;
                 while(program)
                 {
+                    system("cls");
                     cout<<"Wybierz co chcesz zrobic"<<endl;
+                    cout<<"0. Koniec"<<endl;
+                    cout<<"1. Pokaz macierz na ekranie"<<endl;
+                    cout<<"2. Dodaj element macierzy"<<endl;
+                    cout<<"3. Pobierz element macierzy"<<endl;
+                    cout<<"4. Dodaj macierze"<<endl;
+                    cout<<"5. Odejmij macierze"<<endl;
+                    cout<<"6. Pomnoz macierze"<<endl;
+                    cout<<"7. Ilosc wierszy macierzy"<<endl;
+                    cout<<"8. Ilosc kolumn macierzy"<<endl;
+                    cout<<"9. Zapisz macierz w pliku"<<endl;
                     int number;
                     cin>>number;
                     switch (number)
@@ -482,11 +522,13 @@ int main()
                     }   
                     case 1:
                     {
+                        system("cls");
                         macierz3.print();
                         break;
                     }
                     case 2:
                     {
+                        system("cls");
                         int n,m;
                         double val;
                         cout<<"W jakim miejscu macierzy chcesz dodac element?"<<endl;
@@ -497,6 +539,7 @@ int main()
                     }
                     case 3:
                     {
+                        system("cls");
                         int n,m;
                         double pob;
                         cout<<"Ktory element macierzy chcesz pobrac?"<<endl;
@@ -508,22 +551,25 @@ int main()
                     }
                     case 4:
                     {
+                        system("cls");
                         cout<<"Wynik dodawania m2 i macierz3:"<<endl;
                         macierz3.add(m2);
                         break;
                     }
                     case 5:
                     {
+                        system("cls");
                         cout<<"Wynik odejmowania m2 od macierz3:"<<endl;
                         macierz3.subtract(m2);
                         break;
                     }        
                     case 6:
                     {
+                        system("cls");
                         if(macierz3.cols()!=macierz3.rows())
                         {
-                            cout<<"Mnozenie macierzy m2 i macierz1 jest niemozliwe (maja te same wymiary)"<<endl;
-                            cout<<"Chcesz stworzyc inna macierz m3, aby mozna bylo pomnozyc macierz1 i m3?(t/n)"<<endl;
+                            cout<<"Mnozenie macierzy m2 i macierz3 jest niemozliwe (maja te same wymiary)"<<endl;
+                            cout<<"Chcesz stworzyc inna macierz m3, aby mozna bylo pomnozyc macierz3 i m3?(t/n)"<<endl;
                             char odpowiedz;
                             cin>>odpowiedz;
                             switch(odpowiedz)
@@ -534,6 +580,7 @@ int main()
                                     matrix m3(macierz3.cols(),macierz3.rows());
                                     while(gen_m3)
                                     {
+                                        system("cls");
                                         int wybor_m3;
                                         cout<<"0. Koniec"<<endl;
                                         cout<<"1. Dodaj element macierzy m3"<<endl;
@@ -581,23 +628,27 @@ int main()
                     }     
                     case 7:
                     {
-                        cout<<"Macierz3 ma "<<macierz3.cols()<< " wierszy"<<endl;
+                        system("cls");
+                        cout<<"Macierz3 ma "<<macierz3.rows()<< " wierszy"<<endl;
                         break;
                     }
                     case 8:
                     {
-                        cout<<"Macierz3 ma "<<macierz3.rows()<< " kolumn"<<endl;
+                        system("cls");
+                        cout<<"Macierz3 ma "<<macierz3.cols()<< " kolumn"<<endl;
                         break;
                     }
                     case 9:
                     {
-                        string a, b, path;
-                        path=b+"\\"+a;
+                        system("cls");
+                        string a, b;
                         cout<<"Zapisywanie macierzy do pliku"<<endl;
-                        cout<<"Wybierz:"<<endl;
+                        
                         bool x=true;
                         while(x)
                         {
+                            system("cls");
+                            cout<<"Wybierz:"<<endl;
                             cout<<"0. Koniec"<<endl;
                             cout<<"1. Zapisz macierz3 do pliku"<<endl;
                             cout<<"2. Zapisz m2 do pliku"<<endl;

@@ -1,22 +1,62 @@
 #include "matrix.h"
+#include <string.h>
+#include <string>
+#include <iostream>
+#include <fstream>
 
 
 using namespace std;
+
+matrix::matrix(std::string path)
+
+{
+    ifstream file;
+    file.open(path);
+    if(file.is_open()==false)
+    {
+        file.close();cout << "Blad otwarcia pliku" << endl;
+        exit(0);
+    }
+    else
+    {
+        file >> row;
+        file >> column;
+
+        mac =new double *[row];
+        for(int i=0;i<row;i++)
+        {
+            mac[i]=new double [column];
+        }
+
+        for(int i =0; i<row; i++)
+        {
+            for(int j=0; j<column; j++)
+            {
+                file >> mac[i][j];
+            }
+        }
+    }  
+}
 
 matrix::matrix (int r, int c)
 {
     if(r<=0 && c<=0)
     {
-        cout<<"Podales zle wymiary macierzy"<<endl;
+        cout<<"Podales zle wymiary macierzy(1)"<<endl;
     }
     else
     {
         row=r;
         column=c;
         mac=new double *[r];
+
         for(int i=0;i<r;i++)
         {
             mac[i]=new double [c];
+        }
+        
+        for(int i=0;i<r;i++)
+        {
             for(int j=0;j<c;j++)
             {
                 mac[i][j]={0};
@@ -29,7 +69,7 @@ matrix::matrix (int r)
 {
     if(r<=0)
     {
-        cout<<"Podales zle wymiary macierzy"<<endl;
+        cout<<"Podales zle wymiary macierzy(2)"<<endl;
     }
     else
     {
@@ -39,9 +79,13 @@ matrix::matrix (int r)
         for(int i=0;i<r;i++)
         {
             mac[i]=new double [r];
+        }
+        
+        for(int i=0;i<r;i++)
+        {
             for(int j=0;j<r;j++)
             {
-                mac[i][j]={0};
+                mac[i][j]=0;
             }
         }
     }
@@ -161,28 +205,3 @@ void matrix::store(string filename, string path)
     file.close();
 }
 
-matrix::matrix(string path)
-{
-    ifstream file(path);
-    file.open(path);
-    if(file.good()!=0)
-    {
-        cout << "Blad otwarcia pliku" << endl;
-        exit(0);
-    }
-    else
-    {
-        file >> row;
-        file >> column;
-        mac =new double *[row];
-        for(int i =0; i<row; i++)
-        {
-            mac[i]=new double [column];
-            for(int j=0; j<column; j++)
-            {
-                file >> mac[i][j];
-            }
-        }
-        file.close();
-    }  
-}
