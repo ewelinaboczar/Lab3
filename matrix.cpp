@@ -90,6 +90,15 @@ matrix::matrix (int r)
     }
 }
 
+matrix::~matrix()
+{
+    for(int i=0;i<row;i++)
+    {
+        delete[] mac[i];
+    }
+    delete[] mac;
+}
+
 int matrix::cols()
 {
     return column;
@@ -174,7 +183,7 @@ matrix matrix::multiply(matrix &m2)
         for(int j=0;j<m2.cols();j++)
          {
             double multiplication=0;
-            for(int k=0;k<cols();k++)
+            for(int k=0;k<m2.rows();k++)
             {
                 multiplication+=mac[i][k]*m2.mac[k][j];
             }
