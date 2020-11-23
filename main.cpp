@@ -370,6 +370,7 @@ int main()
                                                 break;
                                             }
                                     }
+                                    cout<<"Wynik mnozenia:"<<endl;
                                     matrix mnozenie(macierz1.cols(),m3.rows());
                                     mnozenie=macierz1.multiply(m3);
                                     mnozenie.print();
@@ -604,6 +605,7 @@ int main()
                                                     break;
                                                 }
                                         }
+                                        cout<<"Wynik mnozenia:"<<endl;
                                         matrix mnozenie(macierz3.cols(),m3.rows());
                                         mnozenie=macierz3.multiply(m3);
                                         mnozenie.print();
