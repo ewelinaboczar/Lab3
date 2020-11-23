@@ -1,9 +1,8 @@
-#include "matrix.h"
 #include <string.h>
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include "matrix.h"
 
 using namespace std;
 
@@ -140,7 +139,7 @@ double matrix::get(int n,int m)
     
 }
 
-void matrix::add(matrix m2)
+matrix matrix::add(matrix &m2)
 {
     matrix add(rows(),cols());
     for(int i=0;i<row;i++)
@@ -150,10 +149,10 @@ void matrix::add(matrix m2)
             add.mac[i][j]=mac[i][j]+m2.mac[i][j];
         } 
     }
-    add.print();
+    return add;
 }
 
-void matrix::subtract(matrix m2)
+matrix matrix::subtract(matrix &m2)
 {
     matrix new_mac(rows(),cols());
     for(int i=0;i<row;i++)
@@ -163,12 +162,11 @@ void matrix::subtract(matrix m2)
             new_mac.mac[i][j]=mac[i][j]-m2.mac[i][j];
         }
     }
-    new_mac.print();
+    return new_mac;
 }
 
-void matrix::multiply(matrix m2)
+matrix matrix::multiply(matrix &m2)
 {
-    
     matrix mull(rows(),m2.cols());
 
     for(int i=0;i<rows();i++)
@@ -183,8 +181,7 @@ void matrix::multiply(matrix m2)
             mull.mac[i][j]=multiplication;
         }
     }
-    mull.print();
-    
+    return mull;
 }
 
 void matrix::store(string filename, string path)

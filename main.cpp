@@ -133,23 +133,25 @@ int main()
                     }
                     case 4:
                     {
-                        
+                        matrix dodawanie(w);
                         cout<<"Wynik dodawania m2 i macierz2:"<<endl;
-                        macierz2.add(m2);
+                        dodawanie=macierz2.add(m2);
+                        dodawanie.print();
                         break;
                     }
                     case 5:
                     {
-                        
+                        matrix odejmowanie(w);
                         cout<<"Wynik odejmowania m2 od macierz2:"<<endl;
-                        macierz2.subtract(m2);
+                        odejmowanie=macierz2.subtract(m2);
                         break;
                     }        
                     case 6:
                     {
-                        
+                        matrix mnozenie(w);
                         cout<<"Mnozenie macierzy m2 i macierz2"<<endl;
-                        macierz2.multiply(m2); 
+                        mnozenie=macierz2.multiply(m2); 
+                        mnozenie.print();
                         break;
                     }    
                     case 7:
@@ -311,16 +313,18 @@ int main()
                     }
                     case 4:
                     {
-                        
+                        matrix dodawanie(w,k);
                         cout<<"Wynik dodawania m2 i macierz1:"<<endl;
-                        macierz1.add(m2);
+                        dodawanie=macierz1.add(m2);
+                        dodawanie.print();
                         break;
                     }
                     case 5:
                     {
-                        
+                        matrix odejmowanie(w,k);
                         cout<<"Wynik odejmowania m2 od macierz1:"<<endl;
-                        macierz1.subtract(m2);
+                        odejmowanie=macierz1.subtract(m2);
+                        odejmowanie.print();
                         break;
                     }        
                     case 6:
@@ -349,7 +353,6 @@ int main()
                                     {
                                         case 0:
                                             {
-                                                gen_m3=false;
                                                 break;
                                             } 
                                             case 1:
@@ -367,8 +370,12 @@ int main()
                                                 break;
                                             }
                                     }
+                                    matrix mnozenie(macierz1.cols(),m3.rows());
+                                    mnozenie=macierz1.multiply(m3);
+                                    mnozenie.print();
+                                    gen_m3=false;
                                 }
-                                macierz1.multiply(m3);
+                                
                             }
                             case 'n':
                             {
@@ -580,7 +587,6 @@ int main()
                                         {
                                             case 0:
                                                 {
-                                                    gen_m3=false;
                                                     break;
                                                 } 
                                                 case 1:
@@ -598,8 +604,12 @@ int main()
                                                     break;
                                                 }
                                         }
+                                        matrix mnozenie(macierz3.cols(),m3.rows());
+                                        mnozenie=macierz3.multiply(m3);
+                                        mnozenie.print();
+                                        gen_m3=false;
                                     }
-                                    macierz3.multiply(m3);
+                                    
                                 }
                                 case 'n':
                                 {
